@@ -1,2 +1,4 @@
 com/vendingmachine/service/VendingMachineTest.java
  com.vendingmachine.service.VendingMachineTest
+com/vendingmachine/service/VendingMachineControllerIntegrationTest.java
+ com.vendingmachine.service.VendingMachineControllerIntegrationTest
