@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.vendingmachine.service.VendingMachineTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2022-01-24T20:26:01" hostname="Rebeccas-Air" time="0.095">
+  <properties/>
+  <testcase name="testBuyUnavailableItem()" classname="com.vendingmachine.service.VendingMachineTest" time="0.032"/>
+  <testcase name="testBuyItemWithCorrectChange()" classname="com.vendingmachine.service.VendingMachineTest" time="0.032"/>
+  <testcase name="testBuyItemWithInsufficientChange()" classname="com.vendingmachine.service.VendingMachineTest" time="0.004"/>
+  <testcase name="testGetItemPrice()" classname="com.vendingmachine.service.VendingMachineTest" time="0.001"/>
+  <testcase name="testBuyAllOfAnItem()" classname="com.vendingmachine.service.VendingMachineTest" time="0.004"/>
+  <testcase name="testCheckAvailableItems()" classname="com.vendingmachine.service.VendingMachineTest" time="0.0"/>
+  <testcase name="testBuyItemWithInsufficientFundsReturnItem()" classname="com.vendingmachine.service.VendingMachineTest" time="0.008"/>
+  <testcase name="testBuyItemWithInsufficientChangeThenLoadChange()" classname="com.vendingmachine.service.VendingMachineTest" time="0.001"/>
+  <testcase name="testBuyItemWithPreviouslyInsufficientChange()" classname="com.vendingmachine.service.VendingMachineTest" time="0.001"/>
+  <testcase name="testBuyItemWithInsufficientFundsAddMoreCoins()" classname="com.vendingmachine.service.VendingMachineTest" time="0.001"/>
+  <testcase name="testBuyItemWithInsufficientFunds()" classname="com.vendingmachine.service.VendingMachineTest" time="0.002"/>
+  <testcase name="testLoadItems()" classname="com.vendingmachine.service.VendingMachineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
