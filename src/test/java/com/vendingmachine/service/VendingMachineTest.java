@@ -113,6 +113,22 @@ public class VendingMachineTest {
     }
 
     @Test
+    public void testBuyItemRequiringChange() throws InsufficientFundsException, ItemNotAvailableException, InsufficientChangeException {
+        vendingMachine = new VendingMachine(Maps.newHashMap(
+                ImmutableMap.of(
+                        ItemType.COCA_COLA, 2,
+                        ItemType.CRISPS, 1
+                )), Maps.newHashMap(
+                ImmutableMap.of(
+                        Denomination.ONE_CENT, 20,
+                        Denomination.TEN_CENTS, 2
+                )
+        ));
+        assertThat(vendingMachine.buyItem(ItemType.CRISPS, ImmutableMap.of(Denomination.TEN_CENTS, 7)), is(ImmutableMap.of(Denomination.TEN_CENTS, 2)));
+        assertThat(vendingMachine.availableItems(), is(ImmutableSet.of(ItemType.COCA_COLA)));
+    }
+
+    @Test
     public void testBuyItemWithInsufficientChangeThenLoadChange() throws ItemNotAvailableException, InsufficientFundsException, InsufficientChangeException {
         vendingMachine = new VendingMachine(Maps.newHashMap(
                 ImmutableMap.of(
@@ -150,5 +166,15 @@ public class VendingMachineTest {
         assertThat(vendingMachine.availableItems(), is(ImmutableSet.of(ItemType.CRISPS, ItemType.COCA_COLA)));
         vendingMachine.buyItem(ItemType.COCA_COLA, ImmutableMap.of(Denomination.FIFTY_CENTS, 1, Denomination.ONE_DOLLAR, 1));
         assertThat(vendingMachine.availableItems(), is(ImmutableSet.of(ItemType.CRISPS)));
+    }
+
+    @Test
+    public void testGetChange() {
+        vendingMachine = new VendingMachine(ImmutableMap.of(), Maps.newHashMap(
+                ImmutableMap.of(
+                        Denomination.ONE_DOLLAR, 2,
+                        Denomination.FIFTY_CENTS, 1
+                )));
+        assertThat(vendingMachine.getChange(), is(250));
     }
 }

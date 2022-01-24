@@ -1,2 +1,0 @@
-com/vendingmachine/service/VendingMachineTest.java
- com.vendingmachine.service.VendingMachineTest

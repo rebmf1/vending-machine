@@ -1,6 +1,7 @@
 package com.vendingmachine.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ public enum Denomination {
 
     public static List<Denomination> ordered() {
         return Arrays.stream(values())
-                .sorted(Comparator.comparing(denomination -> denomination.totalCents))
+                .sorted(Comparator.comparing((Denomination denomination) -> denomination.totalCents).reversed())
                 .collect(Collectors.toList());
     }
 }

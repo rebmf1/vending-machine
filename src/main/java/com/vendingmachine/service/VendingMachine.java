@@ -32,11 +32,18 @@ public class VendingMachine {
                 .collect(Collectors.toSet());
     }
 
+    public int getChange() {
+        return calculateTotal(change);
+    }
+
     public int getPrice(ItemType itemType) {
         return itemType.price;
     }
 
     public Map<Denomination, Integer> buyItem(ItemType itemType, Map<Denomination, Integer> coins) throws InsufficientFundsException, InsufficientChangeException, ItemNotAvailableException {
+        if (pendingItem.isPresent()) {
+            returnCoins();
+        }
         loadCoinsForCurrentTransaction(coins);
         pendingItem = Optional.of(itemType);
         return buyItem();
@@ -63,6 +70,9 @@ public class VendingMachine {
     }
 
     public Map<Denomination, Integer> addCoins(Map<Denomination, Integer> additionalCoins) throws InsufficientFundsException, ItemNotAvailableException, InsufficientChangeException {
+        if (pendingItem.isEmpty()) {
+            throw new ItemNotAvailableException();
+        }
         loadCoinsForCurrentTransaction(additionalCoins);
         return buyItem();
     }
@@ -126,7 +136,7 @@ public class VendingMachine {
                 .orElseThrow(InsufficientChangeException::new);
         change.put(coinAvailable, change.get(coinAvailable) - 1);
         changeBreakdown.putIfAbsent(coinAvailable, 0);
-        changeBreakdown.put(coinAvailable, change.get(coinAvailable) + 1);
+        changeBreakdown.put(coinAvailable, changeBreakdown.get(coinAvailable) + 1);
         return calculateChange(changeBreakdown, changeOwed);
     }
 }
